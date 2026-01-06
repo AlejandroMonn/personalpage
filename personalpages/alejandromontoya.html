@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alejandro Montoya - Developer & Builder</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0C1612;
+            color: #F2F0E9;
+            overflow-x: hidden;
+        }
+        
+        .mono {
+            font-family: 'Roboto Mono', monospace;
+        }
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .accent-text {
+            color: #22C55E;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #22C55E 0%, #536B69 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .typing-text {
+            border-right: 3px solid #22C55E;
+            padding-right: 8px;
+            animation: blink 0.7s step-end infinite;
+        }
+        
+        @keyframes blink {
+            from, to { border-color: transparent; }
+            50% { border-color: #22C55E; }
+        }
+        
+        .lang-selector {
+            position: fixed;
+            top: 24px;
+            right: 24px;
+            z-index: 1000;
+        }
+        
+        .lang-btn {
+            background-color: rgba(120, 113, 108, 0.15);
+            color: #F2F0E9;
+            padding: 8px 16px;
+            border-radius: 8px;
+            border: 1px solid rgba(120, 113, 108, 0.3);
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .lang-btn:hover {
+            background-color: rgba(34, 197, 94, 0.15);
+            border-color: #22C55E;
+            color: #22C55E;
+        }
+        
+        .lang-dropdown {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            margin-top: 8px;
+            background-color: rgba(18, 32, 27, 0.95);
+            border: 1px solid rgba(120, 113, 108, 0.3);
+            border-radius: 8px;
+            padding: 8px;
+            display: none;
+            min-width: 120px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .lang-dropdown.active {
+            display: block;
+        }
+        
+        .lang-option {
+            padding: 8px 12px;
+            cursor: pointer;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+            font-size: 14px;
+        }
+        
+        .lang-option:hover {
+            background-color: rgba(34, 197, 94, 0.15);
+            color: #22C55E;
+        }
+        
+        .btn-primary {
+            background-color: #22C55E;
+            color: #0C1612;
+            padding: 12px 24px;
+            border-radius: 12px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            text-decoration: none;
+        }
+        
+        .btn-primary:hover {
+            background-color: #16a34a;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(34, 197, 94, 0.2);
+        }
+        
+        .btn-primary svg {
+            width: 18px;
+            height: 18px;
+        }
+        
+        .project-card, .article-card {
+            background-color: rgba(120, 113, 108, 0.08);
+            border: 1px solid rgba(120, 113, 108, 0.2);
+            border-radius: 16px;
+            padding: 24px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            height: 100%;
+        }
+        
+        .project-card:hover, .article-card:hover {
+            border-color: #22C55E;
+            transform: translateY(-4px);
+            background-color: rgba(34, 197, 94, 0.05);
+        }
+        
+        .tech-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: linear-gradient(135deg, #22C55E 0%, #536B69 100%);
+            color: #F2F0E9;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 500;
+            margin-right: 8px;
+            margin-bottom: 8px;
+        }
+        
+        .status-badge {
+            display: inline-block;
+            padding: 4px 10px;
+            background-color: rgba(34, 197, 94, 0.2);
+            color: #22C55E;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 500;
+            border: 1px solid rgba(34, 197, 94, 0.3);
+        }
+        
+        .skill-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 4px 0;
+        }
+        
+        .skill-icon {
+            width: 8px;
+            height: 8px;
+            background: linear-gradient(135deg, #22C55E 0%, #536B69 100%);
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+        
+        .about-card {
+            background-color: rgba(120, 113, 108, 0.08);
+            border-top-left-radius: 12px;
+            border-bottom-right-radius: 12px;
+            border-bottom-left-radius: 12px;
+            padding: 20px;
+            margin-bottom: 16px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .about-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, #536B69 0%, #22C55E 50%, #536B69 100%);
+        }
+        
+        .focus-card {
+            background-color: rgba(83, 107, 105, 0.12);
+            border: 1px solid rgba(83, 107, 105, 0.4);
+            border-radius: 16px;
+            padding: 24px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .focus-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #536B69 0%, #22C55E 50%, #536B69 100%);
+            opacity: 0.6;
+        }
+        
+        .focus-card h3 {
+            color: #8BA5A3;
+        }
+        
+        .focus-card .skill-icon {
+            background: linear-gradient(135deg, #536B69 0%, #22C55E 100%);
+        }
+        
+       .writing-section {
+    background-color: rgba(83, 107, 105, 0.06);
+    border-radius: 24px;
+    padding: 32px; /* Aumentado para mejor respiración */
+    margin: 0; /* Eliminado el -40px para que sea simétrico */
+    position: relative;
+}
+
+.writing-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(180deg, #536B69 0%, #22C55E 50%, #536B69 100%);
+    border-top-left-radius: 24px;
+    border-bottom-left-radius: 24px;
+}
+
+.writing-section h2 {
+    color: #8BA5A3;
+    margin-bottom: 8px;
+}
+
+.writing-section .article-card {
+    background-color: rgba(83, 107, 105, 0.12);
+    border: 1px solid rgba(83, 107, 105, 0.3);
+    padding: 16px;
+}
+
+.writing-section .article-card:hover {
+    border: 2px solid transparent;
+    background: linear-gradient(#0C1612, #0C1612) padding-box,
+                linear-gradient(135deg, #536B69 0%, #22C55E 100%) border-box;
+    transform: translateY(-4px);
+}
+
+@media (max-width: 768px) {
+    .writing-section {
+        margin: 0 -24px;
+        padding: 16px 24px;
+    }
+}
+        
+        /* Carousel styles */
+       .carousel-container {
+    position: relative;
+    /* El contenedor ahora ocupa el 100% pero oculta lo que sale de sus "flechas" */
+    overflow: hidden; 
+    padding: 0 50px; /* Crea el espacio exacto para las flechas */
+}
+.carousel-container::before,
+.carousel-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 50px;               /* mismo ancho reservado para las flechas */
+    background-color: #0C1612; /* color del fondo */
+    z-index: 40;
+    pointer-events: none;
+}
+
+.carousel-container::before {
+    left: 0;
+}
+
+.carousel-container::after {
+    right: 0;
+}
+
+.carousel-wrapper {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    width: 100%;
+}
+
+.carousel-slide {
+    /* Mantenemos proporciones originales */
+    min-width: 100%;
+    padding: 0 10px; /* Separación entre cards */
+}
+        
+        @media (min-width: 768px) {
+            .carousel-slide {
+                min-width: 50%;
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .carousel-slide {
+                min-width: 33.333%;
+            }
+        }
+        
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: linear-gradient(135deg, #22C55E 0%, #536B69 100%);
+            color: #F2F0E9;
+            border: none;
+            border-radius: 50%;
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 50;
+        }
+        
+        .carousel-btn:hover {
+            background: linear-gradient(135deg, #16a34a 0%, #3d5654 100%);
+            box-shadow: 0 4px 12px rgba(34, 197, 94, 0.4);
+            transform: translateY(-50%) scale(1.1);
+        }
+        
+        .carousel-btn.disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+        
+        .carousel-btn-prev {
+            left: 0;
+        }
+        
+        .carousel-btn-next {
+            right: 0;
+        }
+        
+        /* Gradient buttons */
+        .btn-gradient {
+            background: linear-gradient(135deg, #22C55E 0%, #536B69 100%);
+            color: #F2F0E9;
+            padding: 12px 24px;
+            border-radius: 12px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            text-decoration: none;
+        }
+        
+        .btn-gradient:hover {
+            background: linear-gradient(135deg, #16a34a 0%, #3d5654 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(34, 197, 94, 0.3);
+        }
+        
+        .btn-gradient svg {
+            width: 18px;
+            height: 18px;
+        }
+        
+        @media (max-width: 768px) {
+            .writing-section {
+                margin: 0 -24px;
+                padding: 32px 24px;
+            }
+            
+            .writing-section::before {
+                left: 24px;
+            }
+            
+            .carousel-container {
+                padding: 0 50px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="lang-selector">
+        <button class="lang-btn mono" onclick="toggleLangDropdown()">
+            <span id="current-lang">ES</span> ▾
+        </button>
+        <div class="lang-dropdown" id="lang-dropdown">
+            <div class="lang-option" onclick="changeLang('es')">🇨🇴 Español (Colombia)</div>
+            <div class="lang-option" onclick="changeLang('en')">🇺🇸 English (US)</div>
+            <div class="lang-option" onclick="changeLang('pt')">🇧🇷 Português</div>
+            <div class="lang-option" onclick="changeLang('zh')">🇨🇳 中文</div>
+        </div>
+    </div>
+
+    <div class="max-w-6xl mx-auto px-6 py-10 md:px-12 md:py-8">
+        
+        <section class="fade-in mb-1">
+            <div class="mb-8">
+                <p class="mono text-xs mb-2 tracking-wider gradient-text">AUTODIDACTA • BUILDER</p>
+                <h1 class="text-4xl md:text-6xl font-bold mb-3 tracking-tight">
+                    <span class="typing-text" id="typing-name"></span>
+                </h1>
+            </div>
+        </section>
+
+        <section class="fade-in mb-4">
+            <p class="text-lg leading-relaxed" style="color: rgba(242, 240, 233, 0.9);">
+                ainda thinking que poner there
+            </p>
+        </section>
+
+        <section class="fade-in mb-4">
+            <h2 class="text-2xl md:text-3xl font-semibold mb-5 tracking-tight">Sobre mí</h2>
+            <div class="about-card">
+                <p class="text-base leading-relaxed mb-3" style="color: rgba(242, 240, 233, 0.9); padding-left: 12px;">
+                    ainda thinking que poner there
+                </p>
+                <p class="text-base leading-relaxed" style="color: rgba(242, 240, 233, 0.9); padding-left: 12px;">
+                   ainda thinking que poner there
+                </p>
+            </div>
+        </section>
+
+        <section class="fade-in mb-4">
+            <h2 class="text-2xl md:text-3xl font-semibold mb-5 tracking-tight">Proyectos</h2>
+            <div class="carousel-container" style="margin-top: 20px;">
+                <button class="carousel-btn carousel-btn-prev" onclick="moveCarousel(-1)">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                        <polyline points="15 18 9 12 15 6"></polyline>
+                    </svg>
+                </button>
+                
+                <div class="carousel-wrapper" id="carousel">
+                    <div class="carousel-slide">
+                        <a href="#" class="project-card">
+                            <div class="mb-3">
+                                <h3 class="text-lg font-semibold mb-2">CLI Automation Tool</h3>
+                                <span class="mono text-xs accent-text">2024</span>
+                            </div>
+                            <p class="text-sm mb-3" style="color: rgba(242, 240, 233, 0.8);">
+                                Herramienta de línea de comandos para automatizar tareas repetitivas.
+                            </p>
+                            <div>
+                                <span class="tech-badge">Python</span>
+                                <span class="tech-badge">CLI</span>
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <div class="carousel-slide">
+                        <a href="#" class="project-card">
+                            <div class="mb-3">
+                                <h3 class="text-lg font-semibold mb-2">Convertidor de Monedas</h3>
+                                <span class="mono text-xs accent-text">2024</span>
+                            </div>
+                            <p class="text-sm mb-3" style="color: rgba(242, 240, 233, 0.8);">
+                                App web con visualización geográfica y APIs de conversión.
+                            </p>
+                            <div>
+                                <span class="tech-badge">JavaScript</span>
+                                <span class="tech-badge">API REST</span>
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <div class="carousel-slide">
+                        <a href="#" class="project-card">
+                            <div class="mb-3">
+                                <h3 class="text-lg font-semibold mb-2">Predicciones Mundial</h3>
+                                <span class="mono text-xs accent-text">2024</span>
+                            </div>
+                            <p class="text-sm mb-3" style="color: rgba(242, 240, 233, 0.8);">
+                                Calculadora con algoritmos probabilísticos para predecir resultados.
+                            </p>
+                            <div>
+                                <span class="tech-badge">JavaScript</span>
+                                <span class="tech-badge">Algorithms</span>
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <div class="carousel-slide">
+                        <a href="#" class="project-card">
+                            <div class="mb-3">
+                                <h3 class="text-lg font-semibold mb-2">Proyecto Vacío 1</h3>
+                                <span class="mono text-xs accent-text">2025</span>
+                            </div>
+                            <p class="text-sm mb-3" style="color: rgba(242, 240, 233, 0.8);">
+                                Descripción del proyecto pendiente.
+                            </p>
+                            <div>
+                                <span class="tech-badge">Tech 1</span>
+                                <span class="tech-badge">Tech 2</span>
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <div class="carousel-slide">
+                        <a href="#" class="project-card">
+                            <div class="mb-3">
+                                <h3 class="text-lg font-semibold mb-2">Proyecto Vacío 2</h3>
+                                <span class="mono text-xs accent-text">2025</span>
+                            </div>
+                            <p class="text-sm mb-3" style="color: rgba(242, 240, 233, 0.8);">
+                                Descripción del proyecto pendiente.
+                            </p>
+                            <div>
+                                <span class="tech-badge">Tech 1</span>
+                                <span class="tech-badge">Tech 2</span>
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <div class="carousel-slide">
+                        <a href="#" class="project-card">
+                            <div class="mb-3">
+                                <h3 class="text-lg font-semibold mb-2">Proyecto Vacío 3</h3>
+                                <span class="mono text-xs accent-text">2025</span>
+                            </div>
+                            <p class="text-sm mb-3" style="color: rgba(242, 240, 233, 0.8);">
+                                Descripción del proyecto pendiente.
+                            </p>
+                            <div>
+                                <span class="tech-badge">Tech 1</span>
+                                <span class="tech-badge">Tech 2</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                
+                <button class="carousel-btn carousel-btn-next" onclick="moveCarousel(1)">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                        <polyline points="9 18 15 12 9 6"></polyline>
+                    </svg>
+                </button>
+            </div>
+        </section>
+
+        <section class="fade-in mb-4">
+            <h2 class="text-2xl md:text-3xl font-semibold mb-5 tracking-tight">Stack Técnico</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4" style="margin-top: 20px;">
+                <div>
+                    <h3 class="text-base font-semibold mb-3 accent-text mono">COMPUTER VISION & ML</h3>
+                    <div class="space-y-1">
+                        <div class="skill-item"><div class="skill-icon"></div><span class="text-sm">OpenCV & Computer Vision</span></div>
+                        <div class="skill-item"><div class="skill-icon"></div><span class="text-sm">Hugging Face & ML Models</span></div>
+                        <div class="skill-item"><div class="skill-icon"></div><span class="text-sm">TensorFlow / PyTorch</span></div>
+                        <div class="skill-item"><div class="skill-icon"></div><span class="text-sm">Data Science & Analytics</span></div>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-base font-semibold mb-3 accent-text mono">DESARROLLO & TOOLS</h3>
+                    <div class="space-y-1">
+                        <div class="skill-item"><div class="skill-icon"></div><span class="text-sm">Python (Automation, ML, CLI)</span></div>
+                        <div class="skill-item"><div class="skill-icon"></div><span class="text-sm">JavaScript / Web Development</span></div>
+                        <div class="skill-item"><div class="skill-icon"></div><span class="text-sm">APIs REST & Integrations</span></div>
+                        <div class="skill-item"><div class="skill-icon"></div><span class="text-sm">Git & GitHub</span></div>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-base font-semibold mb-3 accent-text mono">OTROS</h3>
+                    <div class="space-y-1">
+                        <div class="skill-item"><div class="skill-icon"></div><span class="text-sm">Docker & Containerization</span></div>
+                        <div class="skill-item"><div class="skill-icon"></div><span class="text-sm">Linux & Shell Scripting</span></div>
+                        <div class="skill-item"><div class="skill-icon"></div><span class="text-sm">SQL & Databases</span></div>
+                        <div class="skill-item"><div class="skill-icon"></div><span class="text-sm">Cloud Services (AWS/GCP)</span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="fade-in mb-4">
+            <h2 class="text-2xl md:text-3xl font-semibold mb-5 tracking-tight">learnign</h2>
+            <p class="text-base mb-4" style="color: #78716C; margin-top: 20px;">ainda thinking que poner there</p>
+            
+            <div class="focus-card">
+                <h3 class="text-lg font-semibold mb-3">Matemáticas & Fundamentos</h3>
+               
+                <div class="grid md:grid-cols-2 gap-3">
+                    <div class="skill-item"><div class="skill-icon"></div><span class="text-sm">Álgebra Lineal & Matrices</span></div>
+                    <div class="skill-item"><div class="skill-icon"></div><span class="text-sm">Cálculo & Optimización</span></div>
+                    <div class="skill-item"><div class="skill-icon"></div><span class="text-sm">Probabilidad & Estadística</span></div>
+                    <div class="skill-item"><div class="skill-icon"></div><span class="text-sm">Arqueitectura de sistemas y software</span></div>
+                </div>
+            </div>
+        </section>
+
+     <section class="fade-in mb-4 writing-section">
+    <h2 class="text-2xl md:text-3xl font-semibold mb-5 tracking-tight">Escritos</h2>
+    <p class="text-base mb-4" style="color: rgba(139, 165, 163, 0.8);">ainda thinking que poner there</p>
+    
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-3">
+        <a href="#" class="article-card">
+            <h3 class="text-base font-semibold mb-2">Por qué computer vision es el futuro</h3>
+            <p class="text-xs mb-3" style="color: rgba(242, 240, 233, 0.7);">Explorando el impacto en la interacción humano-máquina.</p>
+            <span class="mono text-xs accent-text">2024-12</span>
+        </a>
+        
+        <a href="#" class="article-card">
+            <h3 class="text-base font-semibold mb-2">ML sin título universitario</h3>
+            <p class="text-xs mb-3" style="color: rgba(242, 240, 233, 0.7);">Mi roadmap autodidacta desde cero.</p>
+            <span class="mono text-xs accent-text">2024-11</span>
+        </a>
+        
+        <a href="#" class="article-card">
+            <h3 class="text-base font-semibold mb-2">De automatización a IA</h3>
+            <p class="text-xs mb-3" style="color: rgba(242, 240, 233, 0.7);">La evolución de scripts simples a sistemas complejos.</p>
+            <span class="mono text-xs accent-text">2024-10</span>
+        </a>
+    </div>
+</section>
+
+        <section class="fade-in mb-4">
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-3" style="margin-top: 20px;">
+                <a href="https://github.com/tu-usuario" class="btn-gradient">
+                    <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                    GitHub
+                </a>
+                <a href="https://linkedin.com/in/tu-perfil" class="btn-gradient">
+                    <svg fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                    LinkedIn
+                </a>
+                <a href="https://peerlist.io/tu-usuario" class="btn-gradient">
+                    <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 2.4c5.302 0 9.6 4.298 9.6 9.6s-4.298 9.6-9.6 9.6S2.4 17.302 2.4 12 6.698 2.4 12 2.4zm-1.2 4.8v9.6h2.4V7.2h-2.4z"/></svg>
+                    Peerlist
+                </a>
+                <a href="mailto:tu@email.com" class="btn-gradient">
+                    <svg fill="currentColor" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                    Email
+                </a>
+                <a href="https://x.com/tu-usuario" class="btn-gradient">
+                    <svg fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                    X
+                </a>
+            </div>
+        </section>
+
+        <footer class="text-center pt-10 pb-6" style="border-top: 1px solid rgba(120, 113, 108, 0.2);">
+            <p class="mono text-xs" style="color: #78716C;">
+                © 2026 Alejandro Montoya. Learning by building.
+            </p>
+        </footer>
+    </div>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+        const name = "Alejandro Montoya";
+        let i = 0;
+        function typeWriter() {
+            if (i < name.length) {
+                document.getElementById("typing-name").textContent += name.charAt(i);
+                i++;
+                setTimeout(typeWriter, 100);
+            }
+        }
+        setTimeout(typeWriter, 500);
+
+        function toggleLangDropdown() {
+            document.getElementById('lang-dropdown').classList.toggle('active');
+        }
+
+        function changeLang(lang) {
+            const labels = { es: 'ES', en: 'EN', pt: 'PT', zh: '中文' };
+            document.getElementById('current-lang').textContent = labels[lang];
+            document.getElementById('lang-dropdown').classList.remove('active');
+        }
+
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.lang-selector')) {
+                document.getElementById('lang-dropdown').classList.remove('active');
+            }
+        });
+
+        // Carousel functionality
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.carousel-slide');
+        const totalSlides = slides.length;
+        
+        function getVisibleSlides() {
+            if (window.innerWidth >= 1024) return 3;
+            if (window.innerWidth >= 768) return 2;
+            return 1;
+        }
+        
+        function updateCarousel() {
+            const carousel = document.getElementById('carousel');
+            const slideWidth = 100 / getVisibleSlides();
+            carousel.style.transform = `translateX(-${currentSlide * slideWidth}%)`;
+            updateButtons();
+        }
+        
+        function updateButtons() {
+            const maxSlide = totalSlides - getVisibleSlides();
+            document.querySelector('.carousel-btn-prev').classList.toggle('disabled', currentSlide === 0);
+            document.querySelector('.carousel-btn-next').classList.toggle('disabled', currentSlide >= maxSlide);
+        }
+        
+        function moveCarousel(direction) {
+            const maxSlide = totalSlides - getVisibleSlides();
+            currentSlide = Math.max(0, Math.min(currentSlide + direction, maxSlide));
+            updateCarousel();
+        }
+        
+        window.addEventListener('resize', () => {
+            currentSlide = Math.min(currentSlide, totalSlides - getVisibleSlides());
+            updateCarousel();
+        });
+        
+        updateCarousel();
+    </script>
+</body>
+</html>

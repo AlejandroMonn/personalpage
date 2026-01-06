@@ -1,0 +1,776 @@
+/* ============================================
+   RESET Y BASE
+   ============================================ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background-color: #0C1612;
+    color: #F2F0E9;
+    overflow-x: hidden;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* ============================================
+   TIPOGRAFÍA
+   ============================================ */
+.mono {
+    font-family: 'Roboto Mono', 'Courier New', monospace;
+}
+
+.accent-text {
+    color: #22C55E;
+}
+
+.gradient-text {
+    background: linear-gradient(135deg, #22C55E 0%, #536B69 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: #22C55E; /* Fallback */
+}
+
+/* ============================================
+   LAYOUT PRINCIPAL
+   ============================================ */
+.container {
+    max-width: 1152px; /* 72rem = 1152px */
+    margin: 0 auto;
+    padding: 2.5rem 1.5rem; /* py-10 px-6 */
+}
+
+@media (min-width: 768px) {
+    .container {
+        padding: 2rem 3rem; /* py-8 px-12 */
+    }
+}
+
+/* ============================================
+   ESPACIADOS
+   ============================================ */
+.section-spacing {
+    margin-bottom: 1rem; /* mb-4 = 1rem */
+}
+
+.section-spacing-sm {
+    margin-bottom: 0.25rem; /* mb-1 = 0.25rem */
+}
+
+/* ============================================
+   ANIMACIONES
+   ============================================ */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.typing-text {
+    border-right: 3px solid #22C55E;
+    padding-right: 8px;
+    animation: blink 0.7s step-end infinite;
+}
+
+@keyframes blink {
+    from, to {
+        border-color: transparent;
+    }
+    50% {
+        border-color: #22C55E;
+    }
+}
+
+/* ============================================
+   SELECTOR DE IDIOMA
+   ============================================ */
+.lang-selector {
+    position: fixed;
+    top: 24px;
+    right: 24px;
+    z-index: 1000;
+}
+
+.lang-btn {
+    background-color: rgba(120, 113, 108, 0.15);
+    color: #F2F0E9;
+    padding: 8px 16px;
+    border-radius: 8px;
+    border: 1px solid rgba(120, 113, 108, 0.3);
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.lang-btn:hover {
+    background-color: rgba(34, 197, 94, 0.15);
+    border-color: #22C55E;
+    color: #22C55E;
+}
+
+.lang-dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    margin-top: 8px;
+    background-color: rgba(18, 32, 27, 0.95);
+    border: 1px solid rgba(120, 113, 108, 0.3);
+    border-radius: 8px;
+    padding: 8px;
+    display: none;
+    min-width: 120px;
+    backdrop-filter: blur(10px);
+}
+
+.lang-dropdown.active {
+    display: block;
+}
+
+.lang-option {
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+    font-size: 14px;
+}
+
+.lang-option:hover {
+    background-color: rgba(34, 197, 94, 0.15);
+    color: #22C55E;
+}
+
+@media (max-width: 768px) {
+    .lang-selector {
+        top: 16px;
+        right: 16px;
+    }
+}
+
+/* ============================================
+   HERO SECTION
+   ============================================ */
+.hero-content {
+    margin-bottom: 2rem;
+}
+
+.label {
+    font-size: 0.75rem; /* text-xs */
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.05em;
+    font-weight: 500;
+}
+
+.hero-title {
+    font-size: 2.25rem; /* text-4xl */
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    letter-spacing: -0.025em;
+}
+
+@media (min-width: 768px) {
+    .hero-title {
+        font-size: 3.75rem; /* text-6xl */
+    }
+}
+
+/* ============================================
+   VISION
+   ============================================ */
+.vision-text {
+    font-size: 1.125rem; /* text-lg */
+    line-height: 1.75;
+    color: rgba(242, 240, 233, 0.9);
+}
+
+/* ============================================
+   ABOUT SECTION
+   ============================================ */
+.section-title {
+    font-size: 1.5rem; /* text-2xl */
+    font-weight: 600;
+    margin-bottom: 1.25rem;
+    letter-spacing: -0.025em;
+}
+
+@media (min-width: 768px) {
+    .section-title {
+        font-size: 1.875rem; /* text-3xl */
+    }
+}
+
+.about-card {
+    background-color: rgba(120, 113, 108, 0.08);
+    border-top-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+    border-bottom-left-radius: 12px;
+    padding: 20px;
+    margin-bottom: 16px;
+    position: relative;
+    overflow: hidden;
+}
+
+.about-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(180deg, #536B69 0%, #22C55E 50%, #536B69 100%);
+}
+
+.about-text {
+    font-size: 1rem; /* text-base */
+    line-height: 1.75;
+    color: rgba(242, 240, 233, 0.9);
+    padding-left: 12px;
+}
+
+.about-text:not(:last-child) {
+    margin-bottom: 0.75rem;
+}
+
+/* ============================================
+   CAROUSEL (PROYECTOS) - CORREGIDO
+   ============================================ */
+.carousel-container {
+    position: relative;
+    width: 100%;
+    /* Mantenemos tu ancho máximo original */
+    max-width: 1152px; 
+    margin: 20px auto 0;
+    /* Eliminamos paddings extraños para controlar todo con el viewport */
+    padding: 0;
+}
+
+/* Esta es la ventana mágica: Recorta todo lo que se salga de ella */
+.carousel-viewport {
+    overflow: hidden;
+    /* Estos márgenes crean el espacio VACÍO a los lados donde vivirán los botones.
+       Las tarjetas desaparecerán exactamente en este límite. */
+    margin: 0 60px; 
+    position: relative;
+}
+
+.carousel-wrapper {
+    display: flex;
+    transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+    width: 100%;
+    /* Eliminamos máscaras y overflows aquí, lo maneja el viewport */
+}
+
+.carousel-slide {
+    /* Tus proporciones originales */
+    min-width: 33.333%;
+    max-width: 33.333%;
+    padding: 0 10px;
+    flex-shrink: 0;
+}
+
+/* BOTONES */
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: linear-gradient(135deg, #22C55E 0%, #536B69 100%);
+    color: #F2F0E9;
+    border: none;
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 50;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+.carousel-btn:hover:not(.disabled) {
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 6px 16px rgba(34, 197, 94, 0.4);
+}
+
+.carousel-btn.disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+    filter: grayscale(100%);
+}
+
+/* Posicionamiento exacto en los huecos creados por el margen del viewport */
+.carousel-btn-prev {
+    left: 0;
+}
+
+.carousel-btn-next {
+    right: 0;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+    .carousel-slide {
+        min-width: 50%;
+        max-width: 50%;
+    }
+}
+
+@media (max-width: 768px) {
+    .carousel-viewport {
+        margin: 0 50px; /* Reducimos el espacio en móvil */
+    }
+    
+    .carousel-slide {
+        min-width: 100%;
+        max-width: 100%;
+    }
+    
+    .carousel-btn {
+        width: 36px;
+        height: 36px;
+    }
+}
+
+/* ============================================
+   PROJECT CARDS - ALTURA UNIFORME
+   ============================================ */
+.project-card,
+.article-card {
+    background-color: rgba(120, 113, 108, 0.08);
+    border: 1px solid rgba(120, 113, 108, 0.2);
+    border-radius: 16px;
+    padding: 24px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+    display: flex; /* CAMBIO: flexbox */
+    flex-direction: column; /* CAMBIO: columna */
+    height: 100%; /* CAMBIO: altura completa */
+    min-height: 280px; /* ALTURA MÍNIMA FIJA */
+}
+
+.project-card:hover,
+.article-card:hover {
+    border-color: #22C55E;
+    transform: translateY(-4px);
+    background-color: rgba(34, 197, 94, 0.05);
+}
+
+.project-header {
+    margin-bottom: 0.75rem;
+    flex-shrink: 0; /* No se comprime */
+}
+
+.project-title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    line-height: 1.4;
+    min-height: 2.8em; /* Espacio para 2 líneas */
+}
+
+.project-date {
+    font-size: 0.75rem;
+    color: #22C55E;
+}
+
+.project-desc {
+    font-size: 0.875rem;
+    margin-bottom: auto; /* EMPUJA badges al fondo */
+    color: rgba(242, 240, 233, 0.8);
+    line-height: 1.6;
+    flex-grow: 1; /* Crece para llenar espacio */
+}
+
+.badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.75rem;
+    flex-shrink: 0; /* No se comprime */
+}
+
+.tech-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    background: linear-gradient(135deg, #22C55E 0%, #536B69 100%);
+    color: #F2F0E9;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+/* ============================================
+   PROJECT CARDS
+   ============================================ */
+.project-card,
+.article-card {
+    background-color: rgba(120, 113, 108, 0.08);
+    border: 1px solid rgba(120, 113, 108, 0.2);
+    border-radius: 16px;
+    padding: 24px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    height: 100%;
+}
+
+.project-card:hover,
+.article-card:hover {
+    border-color: #22C55E;
+    transform: translateY(-4px);
+    background-color: rgba(34, 197, 94, 0.05);
+}
+
+.project-header {
+    margin-bottom: 0.75rem;
+}
+
+.project-title {
+    font-size: 1.125rem; /* text-lg */
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.project-date {
+    font-size: 0.75rem; /* text-xs */
+    color: #22C55E;
+}
+
+.project-desc {
+    font-size: 0.875rem; /* text-sm */
+    margin-bottom: 0.75rem;
+    color: rgba(242, 240, 233, 0.8);
+}
+
+.badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.tech-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    background: linear-gradient(135deg, #22C55E 0%, #536B69 100%);
+    color: #F2F0E9;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+/* ============================================
+   STACK TÉCNICO
+   ============================================ */
+.stack-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-top: 20px;
+}
+
+@media (min-width: 768px) {
+    .stack-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .stack-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.stack-header {
+    font-size: 1rem; /* text-base */
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    color: #22C55E;
+}
+
+.skills-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.skill-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 4px 0;
+    font-size: 0.875rem; /* text-sm */
+}
+
+.skill-icon {
+    width: 8px;
+    height: 8px;
+    background: linear-gradient(135deg, #22C55E 0%, #536B69 100%);
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+/* ============================================
+   LEARNING SECTION (FOCUS CARD)
+   ============================================ */
+.section-subtitle {
+    font-size: 1rem; /* text-base */
+    margin-bottom: 1rem;
+    margin-top: 20px;
+    color: #78716C;
+}
+
+.focus-card {
+    background-color: rgba(83, 107, 105, 0.12);
+    border: 1px solid rgba(83, 107, 105, 0.4);
+    border-radius: 16px;
+    padding: 24px;
+    position: relative;
+    overflow: hidden;
+}
+
+.focus-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #536B69 0%, #22C55E 50%, #536B69 100%);
+    opacity: 0.6;
+}
+
+.focus-title {
+    font-size: 1.125rem; /* text-lg */
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    color: #8BA5A3;
+}
+
+.focus-card .skill-icon {
+    background: linear-gradient(135deg, #536B69 0%, #22C55E 100%);
+}
+
+.focus-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+}
+
+@media (min-width: 768px) {
+    .focus-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* ============================================
+   WRITING SECTION - VERSIÓN COMPACTA
+   ============================================ */
+.writing-section {
+    background-color: rgba(83, 107, 105, 0.06);
+    border-radius: 16px;
+    /* Reducimos drásticamente el padding vertical (de 32px a 20px) */
+    padding: 20px 32px; 
+    margin: 0;
+    position: relative;
+}
+
+.writing-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(180deg, #536B69 0%, #22C55E 50%, #536B69 100%);
+    border-top-left-radius: 16px;
+    border-bottom-left-radius: 16px;
+}
+
+.writing-section .section-title {
+    color: #8BA5A3;
+    margin-bottom: 4px; /* Pegamos más el título */
+    font-size: 1.25rem; /* Ligeramente más pequeño */
+}
+
+.writing-section .section-subtitle {
+    color: rgba(139, 165, 163, 0.8);
+    margin-bottom: 12px; /* Reducimos espacio antes de las cards */
+    font-size: 0.875rem;
+}
+
+.articles-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px; /* Menos espacio entre tarjetas */
+}
+
+@media (min-width: 768px) {
+    .articles-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .articles-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* TARJETAS COMPACTAS */
+.writing-section .article-card {
+    background-color: rgba(83, 107, 105, 0.12);
+    border: 1px solid rgba(83, 107, 105, 0.3);
+    
+    /* Padding interno reducido a la mitad */
+    padding: 12px 16px; 
+    
+    /* CRÍTICO: Eliminamos la altura mínima de 280px que tenían antes */
+    min-height: auto !important; 
+    height: auto;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.writing-section .article-card:hover {
+    border: 1px solid transparent; /* Ajustado para evitar saltos */
+    background: linear-gradient(#0C1612, #0C1612) padding-box,
+                linear-gradient(135deg, #536B69 0%, #22C55E 100%) border-box;
+    transform: translateY(-2px); /* Movimiento más sutil */
+}
+
+.article-title {
+    font-size: 0.95rem; /* Texto más compacto */
+    font-weight: 600;
+    margin-bottom: 4px;
+    line-height: 1.3;
+}
+
+.article-desc {
+    font-size: 0.75rem;
+    margin-bottom: 6px;
+    color: rgba(242, 240, 233, 0.7);
+    line-height: 1.4;
+    
+    /* Opcional: Corta el texto si es muy largo para mantener uniformidad */
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.article-date {
+    font-size: 0.7rem;
+    color: #536B69;
+    margin-top: auto;
+}
+
+@media (max-width: 768px) {
+    .writing-section {
+        /* Ajuste de márgenes en móvil */
+        margin: 0 -24px;
+        padding: 20px 24px;
+        border-radius: 0;
+    }
+    
+    .writing-section::before {
+        border-radius: 0;
+    }
+}
+
+/* ============================================
+   CONNECT SECTION (BOTONES SOCIALES)
+   ============================================ */
+.connect-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+    margin-top: 20px;
+}
+
+@media (min-width: 768px) {
+    .connect-grid {
+        grid-template-columns: repeat(5, 1fr);
+    }
+}
+
+.btn-gradient {
+    background: linear-gradient(135deg, #22C55E 0%, #536B69 100%);
+    color: #F2F0E9;
+    padding: 12px 24px;
+    border-radius: 12px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    text-decoration: none;
+    font-size: 0.875rem;
+}
+
+.btn-gradient:hover {
+    background: linear-gradient(135deg, #16a34a 0%, #3d5654 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(34, 197, 94, 0.3);
+}
+
+.btn-gradient svg {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+.footer {
+    text-align: center;
+    padding-top: 2.5rem;
+    padding-bottom: 1.5rem;
+    border-top: 1px solid rgba(120, 113, 108, 0.2);
+}
+
+.footer-text {
+    font-size: 0.75rem; /* text-xs */
+    color: #78716C;
+}
+
+/* ============================================
+   ACCESIBILIDAD Y MEJORAS
+   ============================================ */
+a:focus-visible,
+button:focus-visible {
+    outline: 2px solid #22C55E;
+    outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
