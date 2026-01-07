@@ -16,6 +16,28 @@
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
     <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
     <meta name="referrer" content="strict-origin-when-cross-origin">
+
+    <!-- ============ FAVICONS ============ -->
+    <!-- Favicon básico (todos los navegadores) -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    
+    <!-- PNG moderno (Chrome, Firefox, Edge) -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    
+    <!-- Apple Touch Icon (iOS Safari) -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    
+    <!-- Android Chrome -->
+    <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512x512.png">
+    
+    <!-- Web App Manifest (PWA - opcional) -->
+    <link rel="manifest" href="/site.webmanifest">
+    
+    <!-- Theme color para móviles -->
+    <meta name="theme-color" content="#0C1612">
+    <!-- ================================== -->
     
     <title>Alejandro Montoya - Developer & Builder</title>
     
@@ -34,10 +56,10 @@
             <span id="current-lang">ES</span> ▾
         </button>
         <div class="lang-dropdown" id="lang-dropdown">
-            <div class="lang-option" onclick="changeLang('es')">🇨🇴 Español (Colombia)</div>
-            <div class="lang-option" onclick="changeLang('en')">🇺🇸 English (US)</div>
-            <div class="lang-option" onclick="changeLang('pt')">🇧🇷 Português</div>
-            <div class="lang-option" onclick="changeLang('zh')">🇨🇳 中文</div>
+            <div class="lang-option" data-lang="es">🇨🇴 Español (Colombia)</div>
+            <div class="lang-option" data-lang="en">🇺🇸 English (US)</div>
+            <div class="lang-option" data-lang="pt">🇧🇷 Português(Brasil)</div>
+            <div class="lang-option" data-lang="zh">🇨🇳 中文</div>
         </div>
     </div>
 
@@ -65,7 +87,7 @@
             <h2 class="section-title">Sobre mí</h2>
             <div class="about-card">
                 <p class="about-text">
-                    Soy un polimata 100% autodidacta en Programacion, AI, Marketing, Diseño, Economia, Historia, Geografia y hablo 3 idiomas ( Español, Ingles y Portugues) y 
+                    Soy un polimata 100% autodidacta en Programacion, AI, Marketing, Diseño, Economia, Historia, Geografia, hablo 3 idiomas ( Español, Ingles y Portugues) y 
                     mi objetivo es claro: Ser artifice y parte de avances tecnologicos que cambien el curso de la humanidad para llevarla a una edad dorada
                 </p>
             </div>
@@ -84,7 +106,7 @@
         <div class="carousel-viewport">
             <div class="carousel-wrapper" id="carousel">
                 <div class="carousel-slide">
-                        <a href="#" class="project-card">
+                        <a href="https://github.com/AlejandroMonn/Siwra" class="project-card">
                             <div class="project-header">
                                 <h3 class="project-title">CLI Automation Tool</h3>
                                 <span class="mono project-date">2025</span>
@@ -101,7 +123,7 @@
                     </div>
                     
                     <div class="carousel-slide">
-                        <a href="#" class="project-card">
+                        <a href="https://github.com/AlejandroMonn/Terremot" class="project-card">
                             <div class="project-header">
                                 <h3 class="project-title">Convertidor de Monedas</h3>
                                 <span class="mono project-date">2024</span>
@@ -119,13 +141,13 @@
                     </div>
                     
                     <div class="carousel-slide">
-                        <a href="#" class="project-card">
+                        <a href="https://github.com/AlejandroMonn/Mundial-Score-26" class="project-card">
                             <div class="project-header">
                                 <h3 class="project-title">Predicciones Mundial</h3>
                                 <span class="mono project-date">2025</span>
                             </div>
                             <p class="project-desc">
-                                Calculadora con algoritmos probabilísticos para predecir resultados.
+                                Calculadora con algoritmos para predecir resultados.
                             </p>
                             <div class="badges">
                                 <span class="tech-badge">JavaScript</span>
@@ -154,37 +176,7 @@
                         </a>
                     </div>
                     
-                    <div class="carousel-slide">
-                        <a href="#" class="project-card">
-                            <div class="project-header">
-                                <h3 class="project-title">Proyecto Vacío 2</h3>
-                                <span class="mono project-date">2025</span>
-                            </div>
-                            <p class="project-desc">
-                                Descripción del proyecto pendiente.
-                            </p>
-                            <div class="badges">
-                                <span class="tech-badge">Tech 1</span>
-                                <span class="tech-badge">Tech 2</span>
-                            </div>
-                        </a>
-                    </div>
-                    
-                    <div class="carousel-slide">
-                        <a href="#" class="project-card">
-                            <div class="project-header">
-                                <h3 class="project-title">Proyecto Vacío 3</h3>
-                                <span class="mono project-date">2025</span>
-                            </div>
-                            <p class="project-desc">
-                                Descripción del proyecto pendiente.
-                            </p>
-                            <div class="badges">
-                                <span class="tech-badge">Tech 1</span>
-                                <span class="tech-badge">Tech 2</span>
-                            </div>
-                        </a>
-                    </div>
+                   
             </div>
         </div>
         
@@ -233,13 +225,13 @@
 
         <!-- Learning Section -->
         <section class="fade-in section-spacing">
-            <h2 class="section-title">Learing</h2>            
+            <h2 class="section-title">Aprendiendo</h2>            
             <div class="focus-card">
                 <h3 class="focus-title">Matemáticas & Fundamentos</h3>
                 <div class="focus-grid">
                     <div class="skill-item"><div class="skill-icon"></div><span>Álgebra Lineal & Matrices</span></div>
                     <div class="skill-item"><div class="skill-icon"></div><span>Cálculo & Optimización</span></div>
-                    <div class="skill-item"><div class="skill-icon"></div><span>Meteorology</span></div>
+                    <div class="skill-item"><div class="skill-icon"></div><span>Meteorologia</span></div>
                     <div class="skill-item"><div class="skill-icon"></div><span>Arquitectura de sistemas y software</span></div>
                 </div>
             </div>
@@ -251,19 +243,19 @@
             <p class="section-subtitle">Ideas, aprendizajes y reflexiones</p>
             
             <div class="articles-grid">
-                <a href="#" class="article-card">
+                <a href="https://substack.com/@alejandromontoyam/posts" class="article-card">
                     <h3 class="article-title">Por qué computer vision es el futuro</h3>
                     <p class="article-desc">Computer Vision es una tecnologia abrumadoramente prometedora y vital para el presente y futuro</p>
                     <span class="mono article-date">2025-01-10</span>
                 </a>
                 
-                <a href="#" class="article-card">
+                <a href="https://substack.com/@alejandromontoyam/posts" class="article-card">
                     <h3 class="article-title">Polimata Autodidacta</h3>
                     <p class="article-desc">Como descubri que ser autodidacta es la mejor manera para ser un gran polimata</p>
                     <span class="mono article-date">2025-01-13</span>
                 </a>
                 
-                <a href="#" class="article-card">
+                <a href="https://substack.com/@alejandromontoyam/posts" class="article-card">
                     <h3 class="article-title">IA, Heroe o Villano?</h3>
                     <p class="article-desc">Nos espera una Utopia o Ditopia con la IA</p>
                     <span class="mono article-date">2025-01-20</span>
