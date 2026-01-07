@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Alejandro Montoya - 自学成才的开发者 & 建设者，专攻计算机视觉和机器学习">
+    <meta name="keywords" content="developer, computer vision, machine learning, autodidact, portfolio">
+    <meta name="author" content="Alejandro Montoya">
+
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Alejandro Montoya - Developer & Builder">
+    <meta property="og:description" content="使用计算机视觉和机器学习构建可扩展产品">
+
+    <!-- Security Headers -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+
+    <title>Alejandro Montoya - Developer & Builder</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <!-- Language Selector -->
+    <div class="lang-selector">
+        <button class="lang-btn mono" onclick="toggleLangDropdown()" aria-label="Selector de idioma">
+            <span id="current-lang">中文</span> ▾
+        </button>
+        <div class="lang-dropdown" id="lang-dropdown">
+            <div class="lang-option" data-lang="zh">🇨🇳 中文</div>
+            <div class="lang-option" data-lang="es">🇨🇴 Español (Colombia)</div>
+            <div class="lang-option" data-lang="en">🇺🇸 English (US)</div>
+            <div class="lang-option" data-lang="pt">🇧🇷 Português (Brasil)</div>
+            
+        </div>
+    </div>
+
+    <div class="container">
+        
+        <!-- Hero Section -->
+        <section class="fade-in section-spacing-sm">
+            <div class="hero-content">
+                <p class="mono label gradient-text">自学成才 • 建设者</p>
+                <h1 class="hero-title">
+                    <span class="typing-text" id="typing-name"></span>
+                </h1>
+            </div>
+        </section>
+
+        <!-- Vision Section -->
+        <section class="fade-in section-spacing">
+            <p class="vision-text">
+                构建人类文明的未来
+            </p>
+        </section>
+
+        <!-- About Section -->
+        <section class="fade-in section-spacing">
+            <h2 class="section-title">关于我</h2>
+            <div class="about-card">
+                <p class="about-text">
+                    我是一个100%自学成才的博学者，涉及编程、人工智能、营销、设计、经济学、历史、地理，我会说3种语言（西班牙语、英语和葡萄牙语），我的目标很明确：成为改变人类进程的技术进步的缔造者和参与者，引领人类走向黄金时代
+                </p>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section class="fade-in section-spacing">
+    <h2 class="section-title">项目</h2>
+    <div class="carousel-container">
+        <button class="carousel-btn carousel-btn-prev" onclick="moveCarousel(-1)" aria-label="Proyecto anterior">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+        </button>
+        
+        <div class="carousel-viewport">
+            <div class="carousel-wrapper" id="carousel">
+                <div class="carousel-slide">
+                        <a href="https://github.com/AlejandroMonn/Siwra" class="project-card">
+                            <div class="project-header">
+                                <h3 class="project-title">CLI 自动化工具</h3>
+                                <span class="mono project-date">2025</span>
+                            </div>
+                            <p class="project-desc">
+                                用于自动化重复性任务的命令行工具。
+                            </p>
+                            <div class="badges">
+                                <span class="tech-badge">Python</span>
+                                <span class="tech-badge">CLI</span>
+                                <span class="tech-badge">Linux & Shell Scripiting</span>
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <div class="carousel-slide">
+                        <a href="https://github.com/AlejandroMonn/Terremot" class="project-card">
+                            <div class="project-header">
+                                <h3 class="project-title">货币转换器</h3>
+                                <span class="mono project-date">2025</span>
+                            </div>
+                            <p class="project-desc">
+                                具备地理可视化功能和转换API的网页应用程序。
+                            </p>
+                            <div class="badges">
+                                <span class="tech-badge">JavaScript</span>
+                                <span class="tech-badge">API REST</span>
+                                <span class="tech-badge">SQL</span>
+
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <div class="carousel-slide">
+                        <a href="https://github.com/AlejandroMonn/Mundial-Score-26" class="project-card">
+                            <div class="project-header">
+                                <h3 class="project-title">世界杯预测</h3>
+                                <span class="mono project-date">2025</span>
+                            </div>
+                            <p class="project-desc">
+                                结果预测计算器。
+                            </p>
+                            <div class="badges">
+                                <span class="tech-badge">JavaScript</span>
+                                <span class="tech-badge">Git y Github</span>
+                                <span class="tech-badge">Supabase</span>
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <div class="carousel-slide">
+                        <a href="#" class="project-card">
+                            <div class="project-header">
+                                <h3 class="project-title">手势控制器</h3>
+                                <span class="mono project-date">2026</span>
+                            </div>
+                            <p class="project-desc">
+                                 音量控制器及其他相机交互功能
+                            </p>
+                            <div class="badges">
+                                <span class="tech-badge">Python</span>
+                                <span class="tech-badge">Hugging Face & ML Models
+</span>
+                                <span class="tech-badge">OpenCV & Computer Vision
+</span>
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <div class="carousel-slide">
+                        <a href="#" class="project-card">
+                            <div class="project-header">
+                                <h3 class="project-title">空心项目2</h3>
+                                <span class="mono project-date">2025</span>
+                            </div>
+                            <p class="project-desc">
+                                待定项目描述。
+                            </p>
+                            <div class="badges">
+                                <span class="tech-badge">技术1</span>
+                                <span class="tech-badge">技术2</span>
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <div class="carousel-slide">
+                        <a href="#" class="project-card">
+                            <div class="project-header">
+                                <h3 class="project-title">空心项目3</h3>
+                                <span class="mono project-date">2025</span>
+                            </div>
+                            <p class="project-desc">
+                                待定项目描述。
+                            </p>
+                            <div class="badges">
+                                <span class="tech-badge">技术1</span>
+                                <span class="tech-badge">技术2</span>
+                            </div>
+                        </a>
+                    </div>
+            </div>
+        </div>
+        
+        <button class="carousel-btn carousel-btn-next" onclick="moveCarousel(1)" aria-label="Siguiente proyecto">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+        </button>
+    </div>
+</section>
+        <!-- Stack Section -->
+        <section class="fade-in section-spacing">
+            <h2 class="section-title">技术堆栈</h2>
+            <div class="stack-grid">
+                <div class="stack-column">
+                    <h3 class="stack-header mono">计算机视觉与机器学习</h3>
+                    <div class="skills-list">
+                        <div class="skill-item"><div class="skill-icon"></div><span>OpenCV 与计算机视觉</span></div>
+<div class="skill-item"><div class="skill-icon"></div><span>Hugging Face 与机器学习模型</span></div>
+<div class="skill-item"><div class="skill-icon"></div><span>TensorFlow / PyTorch</span></div>
+<div class="skill-item"><div class="skill-icon"></div><span>数据科学与分析（Pandas、Matlib、GraphQL）</span></div>
+</div>
+</div>
+<div class="stack-column">
+    <h3 class="stack-header mono">开发与工具</h3>
+    <div class="skills-list">
+        <div class="skill-item"><div class="skill-icon"></div><span>Python（自动化、机器学习、CLI）</span></div>
+        <div class="skill-item"><div class="skill-icon"></div><span>JavaScript / Web 开发</span></div>
+        <div class="skill-item"><div class="skill-icon"></div><span>REST API 与系统集成</span></div>
+        <div class="skill-item"><div class="skill-icon"></div><span>Git 与 GitHub</span></div>
+        <div class="skill-item"><div class="skill-icon"></div><span>AI 工具（Claude Code、Kilo Code、Codex 等）</span></div>
+    </div>
+</div>
+<div class="stack-column">
+    <h3 class="stack-header mono">其他</h3>
+    <div class="skills-list">
+        <div class="skill-item"><div class="skill-icon"></div><span>Linux 与 Shell 脚本</span></div>
+        <div class="skill-item"><div class="skill-icon"></div><span>SQL 与数据库</span></div>
+        <div class="skill-item"><div class="skill-icon"></div><span>软件架构</span></div>
+        <div class="skill-item"><div class="skill-icon"></div><span>互联网协议</span></div>
+    </div>
+</div>
+</div>
+</section>
+
+<!-- Learning Section -->
+<section class="fade-in section-spacing">
+<h2 class="section-title">学习</h2>            
+<div class="focus-card">
+    <h3 class="focus-title">数学与基础</h3>
+    <div class="focus-grid">
+        <div class="skill-item"><div class="skill-icon"></div><span>线性代数与矩阵</span></div>
+        <div class="skill-item"><div class="skill-icon"></div><span>微积分与优化</span></div>
+        <div class="skill-item"><div class="skill-icon"></div><span>气象学</span></div>
+        <div class="skill-item"><div class="skill-icon"></div><span>系统与软件架构</span></div>
+    </div>
+</div>
+</section>
+
+<!-- Writing Section -->
+<section class="fade-in section-spacing writing-section">
+<h2 class="section-title">文章</h2>
+<p class="section-subtitle">想法、学习与反思</p>
+
+<div class="articles-grid">
+    <a href="https://substack.com/@alejandromontoyam/posts" class="article-card">
+        <h3 class="article-title">为什么计算机视觉是未来</h3>
+        <p class="article-desc">计算机视觉是一项极具前景且对现在和未来都至关重要的技术</p>
+        <span class="mono article-date">2025-01-10</span>
+    </a>
+    
+    <a href="https://substack.com/@alejandromontoyam/posts" class="article-card">
+        <h3 class="article-title">自学型博学者</h3>
+        <p class="article-desc">我是如何发现自学是成为一名杰出博学者的最佳方式</p>
+        <span class="mono article-date">2025-01-13</span>
+    </a>
+    
+    <a href="https://substack.com/@alejandromontoyam/posts" class="article-card">
+        <h3 class="article-title">人工智能：英雄还是反派？</h3>
+        <p class="article-desc">人工智能将带给我们乌托邦还是反乌托邦？</p>
+        <span class="mono article-date">2025-01-20</span>
+    </a>
+</div>
+</section>
+
+<!-- Connect Section -->
+<section class="fade-in section-spacing">
+<div class="connect-grid">
+    <a href="https://github.com/AlejandroMonn" class="btn-gradient" target="_blank" rel="noopener noreferrer">
+        GitHub
+    </a>
+    <a href="https://linkedin.com/in/tu-perfil" class="btn-gradient" target="_blank" rel="noopener noreferrer">
+        LinkedIn
+    </a>
+    <a href="https://peerlist.io/luialemonmir" class="btn-gradient" target="_blank" rel="noopener noreferrer">
+        Peerlist
+    </a>
+    <a href="mailto:alejanmonn@gmail.com" class="btn-gradient">
+        邮箱
+    </a>
+    <a href="https://x.com/Lalejanmon" class="btn-gradient" target="_blank" rel="noopener noreferrer">
+        X
+    </a>
+</div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+<p class="mono footer-text">
+    © 2026 Alejandro Montoya。通过构建来学习。
+</p>
+</footer>
+
+            </p>
+        </footer>
+    </div>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>
