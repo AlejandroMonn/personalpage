@@ -50,6 +50,9 @@
     <link rel="stylesheet" href="../css/styles.css">
 </head>
 <body>
+    <!-- Dynamic Background Canvas -->
+    <canvas id="bg-canvas" class="bg-canvas"></canvas>
+
     <!-- Language Selector -->
     <div class="lang-selector">
         <button class="lang-btn mono" onclick="toggleLangDropdown()" aria-label="Selector de idioma">
@@ -114,9 +117,9 @@
                     Ferramenta de linha de comando para automatizar tarefas repetitivas.
                 </p>
                 <div class="badges">
-                    <span class="tech-badge">Python</span>
+                    <span class="tech-badge"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" class="badge-icon">Python</span>
                     <span class="tech-badge">CLI</span>
-                    <span class="tech-badge">Linux & Shell Scripting</span>
+                    <span class="tech-badge"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" alt="Linux" class="badge-icon">Linux & Shell Scripting</span>
                 </div>
             </a>
         </div>
@@ -131,9 +134,9 @@
                     Aplicação web com visualização geográfica e APIs de conversão.
                 </p>
                 <div class="badges">
-                    <span class="tech-badge">JavaScript</span>
+                    <span class="tech-badge"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" class="badge-icon">JavaScript</span>
                     <span class="tech-badge">API REST</span>
-                    <span class="tech-badge">SQL</span>
+                    <span class="tech-badge"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="SQL" class="badge-icon">SQL</span>
                 </div>
             </a>
         </div>
@@ -148,8 +151,8 @@
                     Calculadora com algoritmos para prever resultados.
                 </p>
                 <div class="badges">
-                    <span class="tech-badge">JavaScript</span>
-                    <span class="tech-badge">Git e GitHub</span>
+                    <span class="tech-badge"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" class="badge-icon">JavaScript</span>
+                    <span class="tech-badge"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub" class="badge-icon" style="filter:invert(1) brightness(2);">Git & GitHub</span>
                     <span class="tech-badge">Supabase</span>
                 </div>
             </a>
@@ -165,9 +168,9 @@
                     Controlador de volume por câmera.
                 </p>
                 <div class="badges">
-                    <span class="tech-badge">Python</span>
-                    <span class="tech-badge">Hugging Face & ML Models</span>
-                    <span class="tech-badge">OpenCV & Computer Vision</span>
+                    <span class="tech-badge"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" class="badge-icon">Python</span>
+                    <span class="tech-badge"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg" alt="ML Models" class="badge-icon">Hugging Face & ML Models</span>
+                    <span class="tech-badge"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/opencv/opencv-original.svg" alt="OpenCV" class="badge-icon">OpenCV & Computer Vision</span>
                 </div>
             </a>
         </div>
@@ -189,32 +192,71 @@
 <section class="fade-in section-spacing">
     <h2 class="section-title">Stack Técnico</h2>
     <div class="stack-grid">
-        <div class="stack-column">
+        <div class="stack-column glass-card">
             <h3 class="stack-header mono">VISÃO COMPUTACIONAL & ML</h3>
             <div class="skills-list">
-                <div class="skill-item"><div class="skill-icon"></div><span>OpenCV & Visão Computacional</span></div>
-                <div class="skill-item"><div class="skill-icon"></div><span>Hugging Face & Modelos de ML</span></div>
-                <div class="skill-item"><div class="skill-icon"></div><span>TensorFlow / PyTorch</span></div>
-                <div class="skill-item"><div class="skill-icon"></div><span>Ciência de Dados & Análise (Pandas, Matlib, GraphQL)</span></div>
+                <div class="skill-item">
+                    <img class="skill-icon-img" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/opencv/opencv-original.svg" alt="OpenCV" loading="lazy">
+                    <span>OpenCV & Visão Computacional</span>
+                </div>
+                <div class="skill-item">
+                    <img class="skill-icon-img" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg" alt="Hugging Face / ML" loading="lazy">
+                    <span>Hugging Face & Modelos de ML</span>
+                </div>
+                <div class="skill-item">
+                    <img class="skill-icon-img" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg" alt="TensorFlow" loading="lazy">
+                    <span>TensorFlow / PyTorch</span>
+                </div>
+                <div class="skill-item">
+                    <img class="skill-icon-img" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg" alt="Pandas" loading="lazy">
+                    <span>Ciência de Dados & Análise (Pandas, Matlib, GraphQL)</span>
+                </div>
             </div>
         </div>
-        <div class="stack-column">
+        <div class="stack-column glass-card">
             <h3 class="stack-header mono">DESENVOLVIMENTO & FERRAMENTAS</h3>
             <div class="skills-list">
-                <div class="skill-item"><div class="skill-icon"></div><span>Python (Automação, ML, CLI)</span></div>
-                <div class="skill-item"><div class="skill-icon"></div><span>JavaScript / Desenvolvimento Web</span></div>
-                <div class="skill-item"><div class="skill-icon"></div><span>APIs REST & Integrações</span></div>
-                <div class="skill-item"><div class="skill-icon"></div><span>Git & GitHub</span></div>
-                <div class="skill-item"><div class="skill-icon"></div><span>Ferramentas de IA (Claude Code, Kilo Code, Codex etc.)</span></div>
+                <div class="skill-item">
+                    <img class="skill-icon-img" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" loading="lazy">
+                    <span>Python (Automação, ML, CLI)</span>
+                </div>
+                <div class="skill-item">
+                    <img class="skill-icon-img" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" loading="lazy">
+                    <span>JavaScript / Desenvolvimento Web</span>
+                </div>
+                <div class="skill-item">
+                    <img class="skill-icon-img" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg" alt="API REST" loading="lazy">
+                    <span>APIs REST & Integrações</span>
+                </div>
+                <div class="skill-item">
+                    <img class="skill-icon-img" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub" loading="lazy" style="filter: invert(1) brightness(2);">
+                    <span>Git & GitHub</span>
+                </div>
+                <div class="skill-item">
+                    <img class="skill-icon-img" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" alt="AI Tools" loading="lazy">
+                    <span>Ferramentas de IA (Claude Code, Kilo Code, Codex etc.)</span>
+                </div>
             </div>
         </div>
-        <div class="stack-column">
+        <div class="stack-column glass-card">
             <h3 class="stack-header mono">OUTROS</h3>
             <div class="skills-list">
-                <div class="skill-item"><div class="skill-icon"></div><span>Linux & Shell Scripting</span></div>
-                <div class="skill-item"><div class="skill-icon"></div><span>SQL & Bancos de Dados</span></div>
-                <div class="skill-item"><div class="skill-icon"></div><span>Arquitetura de Software</span></div>
-                <div class="skill-item"><div class="skill-icon"></div><span>Protocolos de Internet</span></div>
+                <div class="skill-item">
+                    <img class="skill-icon-img" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" alt="Linux" loading="lazy">
+                    <span>Linux & Shell Scripting</span>
+                </div>
+                <div class="skill-item">
+                    <img class="skill-icon-img" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="SQL" loading="lazy">
+                    <span>SQL & Bancos de Dados</span>
+                </div>
+                <div class="skill-item">
+                    <img class="skill-icon-img" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Architecture" loading="lazy">
+                    <span>Arquitetura de Software</span>
+                </div>
+                <div class="skill-item">
+                    <img class="skill-icon-img" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nginx/nginx-original.svg" alt="Internet Protocols" loading="lazy">
+                    <span>Protocolos de Internet</span>
+                </div>
             </div>
         </div>
     </div>
