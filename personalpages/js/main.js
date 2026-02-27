@@ -150,12 +150,82 @@ window.addEventListener('resize', () => {
 });
 
 // ============================================
+// DYNAMIC BACKGROUND CANVAS (GLASSMORPHISM ORBS)
+// ============================================
+const initDynamicBackground = () => {
+    const canvas = document.getElementById('bg-canvas');
+    if (!canvas) return;
+
+    const ctx = canvas.getContext('2d');
+
+    const resize = () => {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    };
+    resize();
+    window.addEventListener('resize', resize);
+
+    // Orb configuration
+    const orbs = [
+        { x: 0.15, y: 0.2,  r: 280, color: '#22C55E', vx: 0.00018, vy: 0.00012, phase: 0 },
+        { x: 0.75, y: 0.15, r: 220, color: '#536B69', vx: -0.00014, vy: 0.00016, phase: 1.2 },
+        { x: 0.5,  y: 0.6,  r: 320, color: '#22C55E', vx: 0.00010, vy: -0.00018, phase: 2.4 },
+        { x: 0.85, y: 0.75, r: 200, color: '#536B69', vx: -0.00016, vy: -0.00010, phase: 3.6 },
+        { x: 0.25, y: 0.85, r: 180, color: '#22C55E', vx: 0.00012, vy: 0.00014, phase: 4.8 },
+    ];
+
+    // Convert relative positions to absolute
+    orbs.forEach(orb => {
+        orb.ax = orb.x * window.innerWidth;
+        orb.ay = orb.y * window.innerHeight;
+    });
+
+    let time = 0;
+
+    const hexToRgb = (hex) => {
+        const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+        return result ? {
+            r: parseInt(result[1], 16),
+            g: parseInt(result[2], 16),
+            b: parseInt(result[3], 16)
+        } : { r: 0, g: 0, b: 0 };
+    };
+
+    const drawFrame = () => {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        orbs.forEach((orb, i) => {
+            // Smooth floating motion using sine waves
+            const floatX = orb.ax + Math.sin(time * orb.vx * 1000 + orb.phase) * (canvas.width * 0.08);
+            const floatY = orb.ay + Math.cos(time * orb.vy * 1000 + orb.phase) * (canvas.height * 0.06);
+
+            const rgb = hexToRgb(orb.color);
+            const gradient = ctx.createRadialGradient(floatX, floatY, 0, floatX, floatY, orb.r);
+            gradient.addColorStop(0,   `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, 0.18)`);
+            gradient.addColorStop(0.4, `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, 0.08)`);
+            gradient.addColorStop(1,   `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, 0)`);
+
+            ctx.beginPath();
+            ctx.arc(floatX, floatY, orb.r, 0, Math.PI * 2);
+            ctx.fillStyle = gradient;
+            ctx.fill();
+        });
+
+        time += 16; // ~60fps increment
+        requestAnimationFrame(drawFrame);
+    };
+
+    drawFrame();
+};
+
+// ============================================
 // INITIALIZATION
 // ============================================
 const init = () => {
     initFadeInAnimations();
     initTypingAnimation();
     updateCarousel();
+    initDynamicBackground();
 };
 
 // Execute when DOM is ready

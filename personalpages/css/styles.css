@@ -22,6 +22,25 @@ body {
 }
 
 /* ============================================
+   DYNAMIC BACKGROUND CANVAS
+   ============================================ */
+.bg-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.6;
+}
+
+.container {
+    position: relative;
+    z-index: 1;
+}
+
+/* ============================================
    TIPOGRAFÍA
    ============================================ */
 .mono {
@@ -47,6 +66,8 @@ body {
     max-width: 1152px; /* 72rem = 1152px */
     margin: 0 auto;
     padding: 2.5rem 1.5rem; /* py-10 px-6 */
+    position: relative;
+    z-index: 1;
 }
 
 @media (min-width: 768px) {
@@ -526,6 +547,53 @@ body {
     background: linear-gradient(135deg, #22C55E 0%, #536B69 100%);
     border-radius: 50%;
     flex-shrink: 0;
+}
+
+/* Tech icon images in skill items */
+.skill-icon-img {
+    width: 22px;
+    height: 22px;
+    object-fit: contain;
+    flex-shrink: 0;
+    border-radius: 4px;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.skill-item:hover .skill-icon-img {
+    transform: scale(1.15) rotate(-5deg);
+    filter: drop-shadow(0 0 6px rgba(34, 197, 94, 0.6));
+}
+
+/* Badge icon images */
+.badge-icon {
+    width: 14px;
+    height: 14px;
+    object-fit: contain;
+    flex-shrink: 0;
+    vertical-align: middle;
+}
+
+/* Tech badge with icon */
+.tech-badge {
+    display: inline-flex !important;
+    align-items: center;
+    gap: 5px;
+}
+
+/* Glassmorphism stack columns */
+.glass-card {
+    background: rgba(12, 22, 18, 0.55);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(34, 197, 94, 0.15);
+    border-radius: 16px;
+    padding: 20px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.glass-card:hover {
+    border-color: rgba(34, 197, 94, 0.35);
+    box-shadow: 0 8px 32px rgba(34, 197, 94, 0.08), inset 0 1px 0 rgba(255,255,255,0.05);
 }
 
 /* ============================================
